@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-export const Main = ({content}) => {
+export const Main = ({content, handleToggle}) => {
+
 
     const likeometer = content.like ? 'Fuá, me encanta' : 'Meh, decepcionante';
+
 
     return (
         <div className="main">
             {content.text}
-            <button >{likeometer}</button>
+            <button onClick={handleToggle} >{likeometer}</button>
         </div>
     )
 }

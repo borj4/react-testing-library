@@ -1,19 +1,48 @@
 import React from 'react'
+
 import '@testing-library/jest-dom/extend-expect'
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
+
+import { prettyDOM } from '@testing-library/react';
+
 import { Main } from './Main'
 
 
-test('Se renderiza el contenido en Main', () => {
-    const content = {
+describe("Tests globales de Main", () => {
+    
+        const content = {
         text: 'Hola, soy un test',
         like: true
-    }
+        };
 
-    const component = render(<Main content={content} />)
+    test('Se renderiza el texto en Main', () => {
 
-    component.getByText('Hola, soy un test')
-    component.getByText('Fuá, me encanta')
+        const component = render(<Main content={content} />);
+        // console.log(prettyDOM(component.container));
+        component.getByText('Hola, soy un test')
+        // expect(component.container).toHaveTextContent(content.text)
 
-    console.log(component)
+        // component.getByText(content.like ? 'Fuá, me encanta' : 'Meh, decepcionante')
+
+        // const span = component.container.querySelector('div')
+        // console.log(prettyDOM(span))
+    })
+
+    test("Mi botón funciona", () => {
+
+        const mockHandler = jest.fn();
+
+        const component = render(<Main content={content} handleToggle={mockHandler} />);
+
+        const likeometer = content.like ? 'Fuá, me encanta' : 'Meh, decepcionante';
+
+        const button = component.getByText(likeometer)
+        
+        fireEvent.click(button);
+        fireEvent.click(button);
+
+        expect(mockHandler).toHaveBeenCalledTimes(2);
+
+    })
+
 })
