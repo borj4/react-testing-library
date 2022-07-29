@@ -1,7 +1,7 @@
 import './App.css';
-
 import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
+import { List } from './components/List/List'
 import { Footer } from './components/Footer/Footer';
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
     <div className="App">
       <Header text={texts} />
       <Main content={content} handleToggle={handleToggle} />
+      <List />
       <Footer text={texts} />
     </div>
   );
