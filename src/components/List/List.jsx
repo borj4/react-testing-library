@@ -3,9 +3,7 @@ import { request } from "../../helpers";
 import "@testing-library/jest-dom"
 import axios from 'axios'
 
-jest.mock('axios')
 
-console.log("axios",axios)
 
 export const List = () => {
     const [data, setData] = useState([]);
