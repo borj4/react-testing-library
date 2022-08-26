@@ -1,8 +1,8 @@
 import './App.css';
 import { Header } from './components/Header/Header';
 import { Main } from './components/Main/Main';
-import { List } from './components/List/List'
 import { Footer } from './components/Footer/Footer';
+import {PrimaryButton} from 'ds-asistensi-test';
 
 function App() {
   
@@ -23,8 +23,9 @@ function App() {
   return (
     <div className="App">
       <Header text={texts} />
+      <PrimaryButton label="hola" onClick={e=>console.log(e)}/>
       <Main content={content} handleToggle={handleToggle} />
-      <List />
+      {/* <List /> */}
       <Footer text={texts} />
     </div>
   );
