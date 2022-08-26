@@ -33,13 +33,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run unit tests
         run: npm run test -- --coverage
-        
-      # Runs Codecov
-      - name: Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/report.xml
           
       # Upload codecov report
       - name: Codecov report
